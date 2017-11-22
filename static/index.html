@@ -1,7 +1,42 @@
 <!DOCTYPE html>
 
 <!-- From: https://v4-alpha.getbootstrap.com/getting-started/introduction/ -->
+<style>
+  body{
+    padding-top: 90px;
+    padding-bottom: 210px;
+  }
 
+  ul { 
+      list-style: none; 
+    }
+
+  ul li{
+    padding-bottom: 10px;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    
+  }
+
+  ul li:nth-child(2n+2){
+    background-color: rgb(194, 66, 66);
+    text-align: right;
+    margin-left: 55%;
+    margin-right: 5%;
+    margin-top: 10px;
+  }
+
+  ul li:nth-child(2n+1){
+    background-color: rgb(66, 186, 194);
+    text-align: left;
+    margin-right: 55%;
+    margin-left: 5%;
+    margin-top: 10px;
+  }
+
+
+</style>
 <html lang="en">
   <head>
     <!-- Required meta tags -->
@@ -11,17 +46,21 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
   </head>
-  <body>
+  
 	<!-- Top Navigation Bar  -->
-	<nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+	<nav class="navbar fixed-top navbar-light" style="background-color: #e3f2fd;">
       <a class="navbar-brand" href="#">
       Eliza
       </a>
-    </nav>
+  </nav>
+    <body>
 
-      <ul id="eliza"></ul>
+      <ul id="eliza">
+
+      </ul>
+    </body>
     <!-- Bottom Navigation Bar  -->
-	<nav class="navbar fixed-bottom navbar-light" style="background-color: #e3f2fd;">
+	<nav class="navbar fixed-bottom navbar-light" style="background-color: #e3f2fd;" id="navbarBottom">
       <div class="container">
           <!-- Adapted from: https://v4-alpha.getbootstrap.com/components/forms/ -->
           <form id="user-input-form">
@@ -50,11 +89,22 @@
           event.preventDefault();
           $.get('/elizaResponse', { value: $('#user-input').val() } )
             .done(function (data) {
-            var entry = document.createElement('li');
-            entry.appendChild(document.createTextNode(data));
-            list.appendChild(entry);
+            var userEntry = document.createElement('li');
+            var elizaEntry = document.createElement('li');
+            var userInput = document.getElementById('user-input').value;
+
+            userEntry.appendChild(document.createTextNode(userInput));
+            list.appendChild (userEntry);
+            elizaEntry.appendChild(document.createTextNode(data));
+            list.appendChild (elizaEntry);
+
+            setTimeout(function () {
+              $('html, body').animate({
+                scrollTop: $(window).scrollTop() + 250
+              });
+            },500);
+
           })
         });
     </script>
-  </body>
 </html>

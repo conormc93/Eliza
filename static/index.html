@@ -12,30 +12,52 @@
     }
 
   ul li{
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-top: 10px;
+    padding-bottom: 15px;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
     
   }
 
-  ul li:nth-child(2n+2){
-    background-color: rgb(194, 66, 66);
+  /* Eliza Response Bubble */
+  ul li:nth-child(4n){
+	  border-bottom-right-radius: 10px;
+    background-color: #4ca59ed5;
     text-align: right;
     margin-left: 55%;
     margin-right: 5%;
-    margin-top: 10px;
+    font-style: oblique;
   }
 
-  ul li:nth-child(2n+1){
-    background-color: rgb(66, 186, 194);
+  /* Eliza Name */
+  ul li:nth-child(4n-1){
+    text-align: right;
+    margin-left: 55%;
+    margin-right: 5%;
+    font-family: monospace;
+    font-weight: bold;
+  }
+
+  /* User Input Bubble */
+  ul li:nth-child(4n-2){
+	  border-bottom-left-radius: 10px;
+    background-color: rgba(170, 170, 170, 0.692);
+    text-align: left;
+    font-style: oblique;
+    margin-right: 55%;
+    margin-left: 5%;
+  }
+  
+  /* User Name */
+  ul li:nth-child(4n-3){
     text-align: left;
     margin-right: 55%;
     margin-left: 5%;
-    margin-top: 10px;
+    font-family: monospace;
+    font-weight: bold;
   }
 
-
+  
 </style>
 <html lang="en">
   <head>
@@ -54,9 +76,7 @@
       </a>
   </nav>
     <body>
-
       <ul id="eliza">
-
       </ul>
     </body>
     <!-- Bottom Navigation Bar  -->
@@ -89,14 +109,26 @@
           event.preventDefault();
           $.get('/elizaResponse', { value: $('#user-input').val() } )
             .done(function (data) {
-            var userEntry = document.createElement('li');
-            var elizaEntry = document.createElement('li');
+
             var userInput = document.getElementById('user-input').value;
 
+            userEntry = document.createElement('li');
+            var userName = document.createElement('li');
+
+            userName.appendChild(document.createTextNode("User"));
             userEntry.appendChild(document.createTextNode(userInput));
-            list.appendChild (userEntry);
+            
+            list.appendChild(userName);
+            list.appendChild(userEntry);
+
+            elizaEntry = document.createElement('li');
+            var elizaName = document.createElement('li');
+            
+            elizaName.appendChild(document.createTextNode("Eliza"));
             elizaEntry.appendChild(document.createTextNode(data));
-            list.appendChild (elizaEntry);
+            
+            list.appendChild(elizaName);
+            list.appendChild(elizaEntry);
 
             setTimeout(function () {
               $('html, body').animate({

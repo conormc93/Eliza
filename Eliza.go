@@ -24,7 +24,7 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hy.*`, input); matched{
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hy\b|why.*`, input); matched{
 		responses1 := []string {
 			"Why do you ask that?",
 			"I can't tell you why, it's a secret.",
@@ -44,7 +44,7 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hat\b.*`, input); matched{
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hat.*`, input); matched{
 		responses3 := []string {
 			"I'm not really sure to be honest.",
 		}
@@ -53,9 +53,23 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hen.*`, input); matched{
+		responses3 := []string {
+			"I'm not really sure to be honest.",
+		}
+		randIndex := rand.Intn(len(responses3))
+		fmt.Fprintf(w, responses3[randIndex])
+		return
+	}
 
-
-
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]here.*`, input); matched{
+		responses3 := []string {
+			"I'm not really sure to be honest.",
+		}
+		randIndex := rand.Intn(len(responses3))
+		fmt.Fprintf(w, responses3[randIndex])
+		return
+	}
 
 }
 

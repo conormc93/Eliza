@@ -23,7 +23,7 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 		randIndex := rand.Intn(len(responses))
 		fmt.Fprintf(w, responses[randIndex])
 		return
-	}
+	} else 
 
 	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hy\b|why.*`, input); matched{
 		responses := []string {
@@ -319,10 +319,18 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 		randIndex := rand.Intn(len(responses))
 		fmt.Fprintf(w, responses[randIndex])
 		return
+	} else{
+		responses := []string {
+			"Oh, can't we talk about something else?",
+			"I think we should talk about something else.",
+			"Tell me more about you.",
+			"I'm not really sure what you mean.",
+			"I can't say I fully grasp what you are saying.",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
 	}
-
-
-
+		
 
 }
 

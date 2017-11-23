@@ -93,14 +93,37 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 	if matched, _ := regexp.MatchString(`(?i).*\b[Hh]ow.*`, input); matched{
 		responses := []string {
 			"I'm not really sure to be honest.",
-			"I can't believe you had to even think about that..",
-			"How indeed. But alas, must we concern ourselves with such trivial matters?",
-			"I can imagine you have a lovely personality, if one would be able to throw a blind eye to all the talking you like to do.",
+			"Oh, sure, you know yourself.",
+			"Must we concern ourselves with such trivial matters?",
 		}
 		randIndex := rand.Intn(len(responses))
 		fmt.Fprintf(w, responses[randIndex])
 		return
-	}	
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*I am|I'm*`, input); matched{
+		responses := []string {
+			"Oh, and why is that?",
+			"Why are you like that?",
+			"I dont understand that.",
+			"Tell me, why is that the case?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+	
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]as I*`, input); matched{
+		responses := []string {
+			"What if you were?",
+			"Do you think you were?",
+			"Were you?",
+			"What would it mean if you were?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
 
 
 }

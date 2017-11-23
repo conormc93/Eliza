@@ -13,7 +13,7 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 
 	input := r.URL.Query().Get("value")
 
-	if matched, _ := regexp.MatchString(`(?i).*\b[Hh]ello|[Hh]ey|[Hh]i.*`, input); matched{
+	if matched, _ := regexp.MatchString(`(?i).*\b[Hh]ello|[Hh]ey|[Hh]i\b.*`, input); matched{
 		responses := []string {
 			"Hello. Nice to meet you.",
 			"Hi there.",
@@ -68,8 +68,10 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hen.*`, input); matched{
 		responses := []string {
 			"I'm not really sure to be honest.",
-			"I don't know.",
+			"Does that question interest you ?",
+			"Are such questions much on your mind?",
 			"You seem like the inquisitive type...",
+			"What answer would please you most ?",
 			"I can't really answer that, i'd have to think about it",
 			"I find far easier to direct the conversation myself, it's almost a talent one could say.",
 		}
@@ -124,6 +126,202 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, responses[randIndex])
 		return
 	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\bI was\b*`, input); matched{
+		responses := []string {
+			"Were you really?",
+			"Why do you tell me that you were?",
+			"Were you?",
+			"Perhaps I already knew you were?...",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\bI am|I'm\b*`, input); matched{
+		responses := []string {
+			"Are you?",
+			"Did you think telling me this would make a difference to me or you?",
+			"Talking to me can cause these things.",
+			"Do you truly believe that?",
+			"Why is that?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\bI do\b*`, input); matched{
+		responses := []string {
+			"Good for you.",
+			"I'm surprised.",
+			"Why do you?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Pp]erhaps\b*`, input); matched{
+		responses := []string {
+			"You don't seem quite certain.",
+			"Why the uncertain tone",
+			"You aren't sure?",
+			"Don't you know",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+	if matched, _ := regexp.MatchString(`(?i).*you are|you're*`, input); matched{
+		responses := []string {
+			"You don't seem quite certain though...",
+			"Do you sometimes wish that you were?",
+			"You know a lot about me is that it",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Yy]ou\b*`, input); matched{
+		responses := []string {
+			"We were discussing you, not me.",
+			"You're not really talking about me, are you ?",
+			"What are your feelings now ?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Yy]es\b*`, input); matched{
+		responses := []string {
+			"You seem to be quite positive.",
+			"You are sure.",
+			"I see.",
+			"I understand.",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Nn]o\b*`, input); matched{
+		responses := []string {
+			"Are you saying no just to be negative?",
+			"You are being a bit negative.",
+			"Why not?",
+			"Why 'no'?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Bb]ecause\b*`, input); matched{
+		responses := []string {
+			"Is that the real reason?",
+			"Don't any other reasons come to mind ?",
+			"Does that reason seem to explain anything else?",
+			"What other reasons might there be?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ww]hy don't you\b*`, input); matched{
+		responses := []string {
+			"Do you believe I don't?",
+			"Perhaps I will, in good time...",
+			"Would that please you?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\balwaysb*`, input); matched{
+		responses := []string {
+			"Really? Always?",
+			"Can't you think of a specific example",
+			"When?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ll]ike\b*`, input); matched{
+		responses := []string {
+			"Really? Like why is that?",
+			"I would never of guessed that.",
+			"Since when?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ll]ove\b*`, input); matched{
+		responses := []string {
+			"Really? Like why do you?",
+			"That's amazing. Tell me more.",
+			"I wish I could also feel that too.",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\bI would\b*`, input); matched{
+		responses := []string {
+			"Really? Why would you?",
+			"Why would you?",
+			"You're telling me you would? Interesting. Go on.",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Hh]ate\b*`, input); matched{
+		responses := []string {
+			"Really? Why is that?",
+			"I would never of guessed that.",
+			"Since when?",
+			"Hate is such a strong word.",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\bdon't|do not\b*`, input); matched{
+		responses := []string {
+			"Why don't you?",
+			"I can't believe you dont.",
+			"I would of thought you would the oppposite for some reason...",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+	if matched, _ := regexp.MatchString(`(?i).*\b[Ii]t is\b*`, input); matched{
+		responses := []string {
+			"Is it really?",
+			"I would never of guessed that.",
+			"I can't believe that that is the case.",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
+
+
 
 
 }

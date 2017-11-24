@@ -1,3 +1,8 @@
+/*
+Author: Conor McGrath
+Student ID: g00291461
+Description: A web application using go based on the Eliza Program.
+*/
 package main
 
 import (
@@ -336,6 +341,7 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 			"Tell me more about you.",
 			"I'm not really sure what you mean.",
 			"I can't say I fully grasp what you are saying.",
+			"Is ther any thing else you would like to talk about?",
 		}
 		randIndex := rand.Intn(len(responses))
 		fmt.Fprintf(w, responses[randIndex])
@@ -345,11 +351,14 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 }
 
 func main() {
+	//seed the time so a random response if picked
 	rand.Seed(time.Now().Unix())
 
+	//serves the file from the static folder
 	fs := http.FileServer(http.Dir("static"))
 	http.Handle("/", fs)
 
+	//handles the function elizaResponse
 	http.HandleFunc("/elizaResponse", elizaResponse)
 	http.ListenAndServe(":8080", nil)
 }

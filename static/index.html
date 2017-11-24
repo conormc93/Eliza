@@ -2,158 +2,167 @@
 
 <!-- From: https://v4-alpha.getbootstrap.com/getting-started/introduction/ -->
 <style>
-  body{
-    padding-top: 10%;
-    padding-bottom: 12%;
-  }
 
-  ul { 
-      list-style: none; 
+    /* Keeps the body of the conversation within these parameters*/
+    body {
+        padding-top: 10%;
+        padding-bottom: 12%;
     }
 
-  /* Eliza Response Bubble */
-  ul li:nth-child(4n){
-	  border-bottom-right-radius: 10px;
-    background-color: #4ca59ed5;
-    text-align: right;
-    margin-left: 55%;
-    margin-right: 5%;
-    font-style: oblique;
-    padding: 5px;
-  }
+    /* Got rid of bullet points.*/
+    ul {
+        list-style: none;
+    }
 
-  /* Eliza Name */
-  ul li:nth-child(4n-1){
-    text-align: right;
-    margin-left: 55%;
-    margin-right: 5%;
-    font-family: monospace;
-    font-weight: bold;
-  }
+    /* Eliza Response Bubble */
+    ul li:nth-child(4n) {
+        border-bottom-right-radius: 10px;
+        background-color: #4ca59ed5;
+        text-align: right;
+        margin-left: 55%;
+        margin-right: 5%;
+        font-style: oblique;
+        padding: 5px;
+    }
 
-  /* User Input Bubble */
-  ul li:nth-child(4n-2){
-	  border-bottom-left-radius: 10px;
-    background-color: rgba(170, 170, 170, 0.692);
-    text-align: left;
-    font-style: oblique;
-    margin-right: 55%;
-    margin-left: 5%;
-    padding: 5px;
-  }
-  
-  /* User Name */
-  ul li:nth-child(4n-3){
-    text-align: left;
-    margin-right: 55%;
-    margin-left: 5%;
-    font-family: monospace;
-    font-weight: bold;
-  }
+    /* Eliza Name */
+    ul li:nth-child(4n-1) {
+        text-align: right;
+        margin-left: 55%;
+        margin-right: 5%;
+        font-family: monospace;
+        font-weight: bold;
+    }
 
-  
+    /* User Input Bubble */
+    ul li:nth-child(4n-2) {
+        border-bottom-left-radius: 10px;
+        background-color: rgba(170, 170, 170, 0.692);
+        text-align: left;
+        font-style: oblique;
+        margin-right: 55%;
+        margin-left: 5%;
+        padding: 5px;
+    }
+
+    /* User Name */
+    ul li:nth-child(4n-3) {
+        text-align: left;
+        margin-right: 55%;
+        margin-left: 5%;
+        font-family: monospace;
+        font-weight: bold;
+    }
 </style>
 <html lang="en">
-  <head>
+
+<head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  </head>
-  
-	<!-- Top Navigation Bar  -->
-	<nav class="navbar fixed-top navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">
+</head>
+
+<!-- Top Navigation Bar  -->
+<nav class="navbar fixed-top navbar-light" style="background-color: #e3f2fd;">
+    <a class="navbar-brand" href="#">
       Eliza
       </a>
-  </nav>
-    <body>
+</nav>
 
-      <ul id="eliza">
-      </ul>
+<body>
+    <ul id="eliza">
+    </ul>
+</body>
 
-    </body>
-    <!-- Bottom Navigation Bar  -->
-	<nav class="navbar fixed-bottom navbar-light" style="background-color: #e3f2fd;" id="navbarBottom">
-      <div class="container">
-          <!-- Adapted from: https://v4-alpha.getbootstrap.com/components/forms/ -->
-          <form id="user-input-form">
+<!-- Bottom Navigation Bar  -->
+<nav class="navbar fixed-bottom navbar-light" style="background-color: #e3f2fd;" id="navbarBottom">
+    <div class="container">
+        <!-- Adapted from: https://v4-alpha.getbootstrap.com/components/forms/ -->
+        <form id="user-input-form">
             <div class="form-group">
-              <label for="user-input">User input</label>
-              <input type="text" class="form-control" id="user-input" aria-describedby="user-input-help" placeholder="Enter input">
-              <small id="user-input-help" class="form-text text-muted">Type something here and press submit.</small>
+                <label for="user-input">User input</label>
+                <input type="text" class="form-control" id="user-input" aria-describedby="user-input-help" placeholder="Enter input">
+                <small id="user-input-help" class="form-text text-muted">Type something here and press submit.</small>
             </div>
-            
+
             <button type="submit" class="btn btn-primary">Submit</button>
 
-          </form>
-        </div>
-  </nav>
-  
+        </form>
+    </div>
+</nav>
 
-    <!-- jQuery first, then Tether, then Bootstrap JS. -->
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+<!-- jQuery first, then Tether, then Bootstrap JS. -->
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/tether/1.4.0/js/tether.min.js" integrity="sha384-DztdAPBWPRXSA/3eYEEUWrWCy7G5KFbe8fFjk5JAIxUYHKkDx6Qin1DkWx51bBrb" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
-    <script>
-      //grab the list called eliza
-      var list = document.getElementById('eliza');
+<script>
+  //grab the list called eliza
+  var list = document.getElementById('eliza');
 
-      /*
-      * for my user input form
-      * when data is submitted
-      * get the function called elizaResponse
-      * and take the value of the user input
-      * add them to a list element
-      */
-      $("#user-input-form").submit(
-        function(event) {
+  /*
+    * for my user input form
+    * when data is submitted
+    * get the function called elizaResponse
+    * and take the value of the user input
+    * add them to a list element
+    */
+  $("#user-input-form").submit(
+      function(event) {
           event.preventDefault();
-          $.get('/elizaResponse', { value: $('#user-input').val() } )
-            .done(function (data) {
-            
-            //grab the user input and assign it to a variable
-            var userInput = document.getElementById('user-input').value;
-            
-            //
-            userEntry = document.createElement('li');
-            userName = document.createElement('li');
+          $.get('/elizaResponse', {
+                  value: $('#user-input').val()
+              })
+              .done(function(data) {
 
-            userName.appendChild(document.createTextNode("User"));
-            userEntry.appendChild(document.createTextNode(userInput));
-            
-            list.appendChild(userName);
-            list.appendChild(userEntry);
+                  //grab the user input and assign it to a variable
+                  var userInput = document.getElementById('user-input').value;
 
-            elizaEntry = document.createElement('li');
-            elizaName = document.createElement('li');
-            elizaName.appendChild(document.createTextNode("....."));
+                  //create the list elements for the user
+                  userEntry = document.createElement('li');
+                  userName = document.createElement('li');
 
-            setTimeout(function(){
-              
-              elizaEntry.appendChild(document.createTextNode(data));
-              elizaName.appendChild(document.createTextNode("Eliza"));
+                  //add the data for the user to the list
+                  userName.appendChild(document.createTextNode("User"));
+                  userEntry.appendChild(document.createTextNode(userInput));
 
-            }, 1000);
+                  //add the data onto the list and push to the screen.
+                  list.appendChild(userName);
+                  list.appendChild(userEntry);
 
-            list.appendChild(elizaName);
-            list.appendChild(elizaEntry);
-            
-            //clears the input box after the user submits data/text
-            $('#user-input').val("");
-            
-            //scrolls the body of the hmtl file up after 500 milliseconds
-            //https://stackoverflow.com/questions/43822323/scroll-down-page-in-100-pixels-with-settimeout
-            setTimeout(function () {
-              $('html, body').animate({
-                scrollTop: $(window).scrollTop() + 250
-              });
-            },500);
+                  //create the list elements for Eliza
+                  elizaEntry = document.createElement('li');
+                  elizaName = document.createElement('li');
+                  elizaName.appendChild(document.createTextNode("....."));
 
-          })
-        });
-    </script>
+                  //appends eliza's resposne to the variable after 1 second
+                  setTimeout(function() {
+
+                      elizaEntry.appendChild(document.createTextNode(data));
+                      elizaName.appendChild(document.createTextNode("Eliza"));
+
+                  }, 1000);
+                  
+                  //appends the data stored in those variables to a list
+                  list.appendChild(elizaName);
+                  list.appendChild(elizaEntry);
+
+                  //clears the input box after the user submits data/text
+                  $('#user-input').val("");
+
+                  //scrolls the body of the hmtl file up after 500 milliseconds
+                  //https://stackoverflow.com/questions/43822323/scroll-down-page-in-100-pixels-with-settimeout
+                  setTimeout(function() {
+                      $('html, body').animate({
+                          scrollTop: $(window).scrollTop() + 250
+                      });
+                  }, 500);
+
+              })
+      });
+</script>
+
 </html>

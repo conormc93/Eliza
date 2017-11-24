@@ -1,7 +1,7 @@
 # Data Representation and Querying 
 # Project Eliza-ChatBot
 
-####Author: Conor McGrath
+#### Author: Conor McGrath
 This repository was created as part of a project for the module [Data Representation and Querying](https://data-representation.github.io/)
 
 The project outcomes were to create a chat-bot web application using Golang.
@@ -63,4 +63,3 @@ Here is a list of a few resourcses I visited most frequently.
 + (https://github.com/codeanticode/eliza)
 
 
-![Eliza](/static/img/eliza.png?raw=true "Screen Capture of Eliza")

@@ -162,6 +162,16 @@ func elizaResponse(w http.ResponseWriter, r *http.Request) {
 		fmt.Fprintf(w, responses[randIndex])
 		return
 	}
+	if matched, _ := regexp.MatchString(`(?i).*\bI dont|I don't\b*`, input); matched{
+		responses := []string {
+			"I thought you would.",
+			"Hard to believe.",
+			"Why don't you?",
+		}
+		randIndex := rand.Intn(len(responses))
+		fmt.Fprintf(w, responses[randIndex])
+		return
+	}
 
 	if matched, _ := regexp.MatchString(`(?i).*\b[Pp]erhaps\b*`, input); matched{
 		responses := []string {

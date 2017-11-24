@@ -3,21 +3,13 @@
 <!-- From: https://v4-alpha.getbootstrap.com/getting-started/introduction/ -->
 <style>
   body{
-    padding-top: 90px;
-    padding-bottom: 250px;
+    padding-top: 10%;
+    padding-bottom: 12%;
   }
 
   ul { 
       list-style: none; 
     }
-
-  ul li{
-    padding-bottom: 15px;
-    padding-left: 15px;
-    padding-right: 15px;
-    padding-top: 15px;
-    
-  }
 
   /* Eliza Response Bubble */
   ul li:nth-child(4n){
@@ -27,6 +19,7 @@
     margin-left: 55%;
     margin-right: 5%;
     font-style: oblique;
+    padding: 5px;
   }
 
   /* Eliza Name */
@@ -46,6 +39,7 @@
     font-style: oblique;
     margin-right: 55%;
     margin-left: 5%;
+    padding: 5px;
   }
   
   /* User Name */
@@ -76,8 +70,10 @@
       </a>
   </nav>
     <body>
+
       <ul id="eliza">
       </ul>
+
     </body>
     <!-- Bottom Navigation Bar  -->
 	<nav class="navbar fixed-bottom navbar-light" style="background-color: #e3f2fd;" id="navbarBottom">
@@ -103,17 +99,28 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
 
     <script>
+      //grab the list called eliza
       var list = document.getElementById('eliza');
+
+      /*
+      * for my user input form
+      * when data is submitted
+      * get the function called elizaResponse
+      * and take the value of the user input
+      * add them to a list element
+      */
       $("#user-input-form").submit(
         function(event) {
           event.preventDefault();
           $.get('/elizaResponse', { value: $('#user-input').val() } )
             .done(function (data) {
-
+            
+            //grab the user input and assign it to a variable
             var userInput = document.getElementById('user-input').value;
-
+            
+            //
             userEntry = document.createElement('li');
-            var userName = document.createElement('li');
+            userName = document.createElement('li');
 
             userName.appendChild(document.createTextNode("User"));
             userEntry.appendChild(document.createTextNode(userInput));
@@ -122,14 +129,24 @@
             list.appendChild(userEntry);
 
             elizaEntry = document.createElement('li');
-            var elizaName = document.createElement('li');
-            
-            elizaName.appendChild(document.createTextNode("Eliza"));
-            elizaEntry.appendChild(document.createTextNode(data));
-            
+            elizaName = document.createElement('li');
+            elizaName.appendChild(document.createTextNode("....."));
+
+            setTimeout(function(){
+              
+              elizaEntry.appendChild(document.createTextNode(data));
+              elizaName.appendChild(document.createTextNode("Eliza"));
+
+            }, 1000);
+
             list.appendChild(elizaName);
             list.appendChild(elizaEntry);
-
+            
+            //clears the input box after the user submits data/text
+            $('#user-input').val("");
+            
+            //scrolls the body of the hmtl file up after 500 milliseconds
+            //https://stackoverflow.com/questions/43822323/scroll-down-page-in-100-pixels-with-settimeout
             setTimeout(function () {
               $('html, body').animate({
                 scrollTop: $(window).scrollTop() + 250
